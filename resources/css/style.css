@@ -1,0 +1,25 @@
+.root{
+-fx-background-color: #1B2355;
+-fx-border-color: #E79294;
+-fx-border-radius: 20;
+-fx-padding: 0 1 6 1;
+}
+
+.hbox{
+    -fx-text-alignment: center;
+    -fx-font: bold italic 6pt "Arial";
+    -fx-text-fill: green;
+    -fx-alignment:center;
+    -fx-background-color: #F66464;
+    -fx-border-radius: 20;
+    -fx-padding: 0 0 5 0;
+}
+
+.goclass{
+    -fx-text-fill: #FEF8F8;
+    -fx-font: bold italic 12pt "Arial";
+}
+
+.a22{
+   -fx-background-color: #333333;
+}
