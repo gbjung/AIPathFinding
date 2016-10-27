@@ -9,15 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.util.List;
-import sample.*;
-
-import javax.security.auth.callback.ChoiceCallback;
-
-import static com.apple.eio.FileManager.getResource;
 
 public class Main extends Application {
 
@@ -26,6 +20,9 @@ public class Main extends Application {
 
 
     @Override
+    //Create the stage with a borderpane as a base, and add an Hbox to the top to read
+    //user input and title. Attach a gridpane in the center to act as the tile map of AU
+    //Attach the CSS sheet and start the GUI
     public void start(Stage primaryStage) throws Exception{
         BorderPane border = new BorderPane();
         Gridplane gridplane = new Gridplane();
@@ -39,28 +36,28 @@ public class Main extends Application {
     }
 
 
-
+    //Function that creates an Hbox
     private HBox addHBox(){
         HBox hbox = new HBox();
         hbox.setSpacing(10);
-        hbox.getStyleClass().add("hbox");
-        Label from = new Label ("Where from?");
+        hbox.getStyleClass().add("hbox"); //add CSS class as "hbox"
+        Label from = new Label ("Where from?"); //add a label and box of choices to pick from
         ChoiceBox wherefrom = new ChoiceBox(FXCollections.observableArrayList("Katzen",
                 "MGC", "Batelle", "Kogod", "SIS", "Ward", "Library",
                 "Kay", "Hurst", "Anderson", "Letts", "McKinley", "Leonard", "Cassell"));
-        Label to = new Label ("Where to?");
+        Label to = new Label ("Where to?"); //add a label and box of choices to pick from
         ChoiceBox whereto = new ChoiceBox(FXCollections.observableArrayList("Katzen",
                 "MGC", "Batelle", "Kogod", "SIS", "Ward", "Library",
                 "Kay", "Hurst", "Anderson", "Letts", "McKinley", "Leonard", "Cassell"));
-        Button runIt = new Button("LETS GOOOOO");
-        runIt.setOnAction(new EventHandler<ActionEvent>(){
+        Button runIt = new Button("LETS GOOOOO"); //Add a button
+        runIt.setOnAction(new EventHandler<ActionEvent>(){ //when button is clicked
             @Override
             public void handle(ActionEvent event) {
                 Remap remap = new Remap();
-                List<Integer[]> returned = remap.test(0, 40, 10, 38); //katzen to sis
-                //List<Integer[]> returned = remap.test(20, 20, 40, 38); //battle to gray
-                //List<Integer[]> returned = remap.test(10, 38, 5, 5); //ward to cassell
+                List<Integer[]> returned = remap.test(10, 38, 5, 5);
+                //Runs the function to generate the red path based on returned coordinate arraylist
                 Gridplane gridplane = new Gridplane();
+                //Repaints the gridpane based on the red path
                 gridplane.redraw(returned);
                 
             }

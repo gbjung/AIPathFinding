@@ -41,13 +41,9 @@ public class Remap{
         endy = y;
     }
 
-    static void setblock(int x, int y){
-        grid[x][y] = null;
-    }
 
     static tile[][] grid = new tile[40][50];
 
-    //static campus au = new campus();
 
     static PriorityQueue<tile> open;
     static boolean [][] closed;
@@ -132,16 +128,8 @@ public class Remap{
     }
 
     public List<Integer[]> test(int si, int sj, int ei, int ej){
-        //Reset
-        //campus campus = new campus();
+
         grid = new tile[50][40];
-
-
-        //for (int i = 0; i < 40 ; i++) { //test shit
-        //    for (int j = 0; j < 50; j++) { //
-        //        grid[i][j] = new tile(i,j,"sidewalk",1);
-        //    }
-        //}
 
 
 
@@ -693,35 +681,14 @@ public class Remap{
 
         for(int i=0;i<50;++i){
             for(int j=0;j<40;++j){
-                //grid[i][j] = new tile(x,y);
                 grid[i][j].hcost = Math.abs(i-endx)+Math.abs(j-endy);
-                //System.out.print(grid[i][j].hcost+" ");
             }
             System.out.println();
         }
         grid[si][sj].fcost = 0;
 
-           /*
-             Set blocked cells. Simply set the cell values to null
-             for blocked cells.
-           */
-        //for(int i=0;i<blocked.length;++i){
-        //  setBlocked(blocked[i][0], blocked[i][1]);
-        //}
-
 
         astar();
-        /*
-        System.out.println("\nScores for cells: ");
-        for(int i=0;i<40;++i){
-            for(int j=0;j<40;++j){
-                if(grid[i][j]!=null)System.out.printf("%-3f ", grid[i][j].fcost);
-                else System.out.print("BL  ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-        */
 
         List<Integer[]> thepath = new ArrayList<Integer[]>();
         if(closed[endx][endy]){
@@ -742,9 +709,4 @@ public class Remap{
 
     }
 
-    void printshit(List<Integer[]> list){
-        for(Integer[] coordinates: list){
-            System.out.printf("%d, %d%n", coordinates[0], coordinates[1]);
-        }
-    }
 }
