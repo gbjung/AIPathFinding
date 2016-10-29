@@ -51,7 +51,7 @@ public class Main extends Application {
         HBox hbox = new HBox();
         hbox.setSpacing(10);
         hbox.getStyleClass().add("hbox"); //add CSS class as "hbox"
-        final String [] movechoices = new String []{"Katzen",
+        final String [] movechoices = new String []{"Katzen", //part of attempt at improving interface (route choice)
                 "MGC", "Batelle", "Kogod", "SIS", "Ward", "Library",
                 "Kay", "Hurst", "Anderson", "Letts", "McKinley", "Leonard", "Cassell"};
 
@@ -60,7 +60,7 @@ public class Main extends Application {
                 "MGC", "Batelle", "Kogod", "SIS", "Ward", "Library",
                 "Kay", "Hurst", "Anderson", "Letts", "McKinley", "Leonard", "Cassell"));
 
-        wherefrom.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+        wherefrom.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() { //Attempt at setting start coords
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 start = movechoices[newValue.intValue()];
@@ -71,8 +71,8 @@ public class Main extends Application {
         ChoiceBox whereto = new ChoiceBox(FXCollections.observableArrayList("Katzen",
                 "MGC", "Batelle", "Kogod", "SIS", "Ward", "Library",
                 "Kay", "Hurst", "Anderson", "Letts", "McKinley", "Leonard", "Cassell"));
-        wherefrom.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
+        wherefrom.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() { //Attempt at setting end coords
+            @Override                                                                                    //Something went wrong with this
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 end = movechoices[newValue.intValue()];
             }
@@ -87,9 +87,9 @@ public class Main extends Application {
                     ychoice1 = 10;
                 }
 
-                if(end.equals("SIS")){ //Couldn't get this to work. We attempted to improve interface but doesn't fully work. Left this in to show that we worked on it
-                    xchoice2 = 39;
-                    ychoice2 = 39;
+                if(end.equals("SIS")){ //Couldn't get this to work. Was part of attempt at improving interface
+                    xchoice2 = 39;     //Left this in just to show we worked on it
+                    ychoice2 = 39;     //If we got it working we would have entered coords for all buildings
                 }
 
                 Remap remap = new Remap();

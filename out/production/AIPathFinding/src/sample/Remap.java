@@ -1,8 +1,5 @@
 package sample;
 
-/**
- * Created by GB on 10/24/16.
- */
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -19,7 +16,7 @@ public class Remap{
         double fcost; //Final cost
 
         tile parent;
-        tile(int x, int y, String type, double gcost){ //Tile class
+        tile(int x, int y, String type, double gcost){ //Tile class for composing map
             this.x = x;
             this.y = y;
             this.type = type;
@@ -62,7 +59,7 @@ public class Remap{
 
 
     public static void astar(){ //Algorithm implementation, based on code from http://www.codebytes.in/2015/02/a-shortest-path-finding-algorithm.html
-        open.add(grid[startx][starty]); //Checks for cost (heuristic and greedy) and takes path of lowest cost
+        open.add(grid[startx][starty]);
 
         tile current;
 
@@ -123,7 +120,7 @@ public class Remap{
 
     public List<Integer[]> pathfind(int si, int sj, int ei, int ej){ //Implementation of algorithm on campus map
 
-        grid = new tile[50][40]; //Map build starts here. Decided that cost of 1 for sidewalk, 3 for building, 4 for grass created moth accurate paths.
+        grid = new tile[50][40]; //Map build starts here. Decided that cost of 1 for sidewalk, 3 for building, 4 for grass created most accurate paths.
 
         for (int i = 2; i < 20; i++) { //First bit of sidewalk after Katzen
             for (int j = 19; j < 21; j++) {
@@ -669,8 +666,8 @@ public class Remap{
 
         astar();//Use algorithm on map
 
-        List<Integer[]> thepath = new ArrayList<Integer[]>(); //After calling the algorithm on the map with the start and end coords this creates the best path to be printed
-        if(closed[endx][endy]){
+        List<Integer[]> thepath = new ArrayList<Integer[]>(); //After calling the algorithm on the map with the start and end
+        if(closed[endx][endy]){                       //coords this creates the best path to be printed
             tile current = grid[endx][endy];
             while(current.parent!=null){
                 Integer[] point = {current.parent.x, current.parent.y};

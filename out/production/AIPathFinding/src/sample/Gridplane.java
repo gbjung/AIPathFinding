@@ -8,9 +8,6 @@ import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by GB on 10/24/16.
- */
 public class Gridplane {
     static GridPane mGridpane;
 
@@ -484,7 +481,7 @@ public class Gridplane {
                 grid.add(rec, j+1, i+1);            }
         }
 
-        for (int i = 35; i < 46; i++) { // sidewalk behind Centennial (this needs to be fixed)
+        for (int i = 35; i < 46; i++) { // sidewalk behind Centennial
             for (int j = 4; j < 10; j++) {
                 Rectangle rec = new Rectangle(7,7);
                 rec.getStyleClass().add(String.format("a%d%d",i,j));
